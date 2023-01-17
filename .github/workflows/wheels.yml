@@ -36,7 +36,7 @@ jobs:
           # Build the m1 wheel for macs
           CIBW_ARCHS_MACOS: "arm64"
           # Skip all other wheels
-          CIBW_BUILD: "*-macos_arm64"
+          CIBW_BUILD: "${{ matrix.python_build_version }}-macosx_arm64"
           # Skip tests (wont work on Intel runners)
           CIBW_TEST_SKIP: "*-macosx_arm64"
 
