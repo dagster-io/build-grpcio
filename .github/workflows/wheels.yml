@@ -32,11 +32,19 @@ jobs:
       - name: Build wheels
         run: python -m cibuildwheel --output-dir wheelhouse
         env:
+          # See https://cibuildwheel.readthedocs.io/en/stable/options/
+          # Build the m1 wheel for macs
           CIBW_ARCHS_MACOS: "arm64"
-          CIBW_BUILD: "${{ matrix.python_build_version }}-macosx_arm64"
+          # Skip all other wheels
+          CIBW_BUILD: "*-macos_arm64"
+          # Skip tests (wont work on Intel runners)
+          CIBW_TEST_SKIP: "*-macosx_arm64"
+
+          # From grpc instructions
+          # https://github.com/grpc/grpc/tree/v1.47.2/src/python/grpcio
           CIBW_BUILD_FRONTEND: pip
           CIBW_ENVIRONMENT_MACOS: "GRPC_PYTHON_BUILD_WITH_CYTHON=1"
-          CIBW_BEFORE_BUILD: "pip install -r requirements.txt; fi"
+          CIBW_BEFORE_BUILD: "pip install -r requirements.txt"
 
       - uses: actions/upload-artifact@v3
         with:
