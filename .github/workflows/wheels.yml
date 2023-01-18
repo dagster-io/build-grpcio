@@ -1,4 +1,4 @@
-name: Build m1 grpcio wheel 1.51.1
+name: Build m1 grpcio wheel
 
 on: [workflow_dispatch]
 
