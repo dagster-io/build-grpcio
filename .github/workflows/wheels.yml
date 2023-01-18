@@ -1,15 +1,15 @@
-name: Build m1 grpcio wheel
+name: Build m1 grpcio wheel 1.51.1
 
 on: [workflow_dispatch]
 
 jobs:
   build_wheels:
-    name: Build wheels on ${{ matrix.os }}
+    name: Build ${{ matrix.os }} ${{ matrix.python_build_version }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os: ["macOS-11"]
-        python_build_version: ["cp39", "cp310"]
+        python_build_version: ["cp38", "cp39", "cp310"]
         package: ["grpcio"]
 
     steps:
@@ -18,7 +18,7 @@ jobs:
         with:
           repository: grpc/grpc
           path: grpc
-          ref: v1.47.2
+          ref: v1.51.1
 
       - name: Submodule init
         run: cd grpc && git submodule update --init 
