@@ -9,7 +9,7 @@ jobs:
     strategy:
       matrix:
         os: ["macOS-11"]
-        python_build_version: ["cp37", "cp311"]
+        python_build_version: ["cp311"]
         package: ["grpcio"]
 
     steps:
