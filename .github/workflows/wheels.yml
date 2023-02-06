@@ -18,7 +18,7 @@ jobs:
         with:
           repository: grpc/grpc
           path: grpc
-          ref: v1.51.1
+          ref: v1.47.2
 
       - name: Submodule init
         run: cd grpc && git submodule update --init 
