@@ -31,7 +31,9 @@ jobs:
 
       - name: Build wheels
 #        run: cd grpc && python -m cibuildwheel --output-dir ../wheelhouse
-        run:  cd grpc/tools/distrib/python/grpcio_tools
+        run:  >
+          cd grpc/tools/distrib/python/grpcio_tools && 
+          python -m cibuildwheel --output-dir $GITHUB_WORKSPACE/wheelhouse
         env:
           # See https://cibuildwheel.readthedocs.io/en/stable/options/
           # Build the m1 wheel for macs
