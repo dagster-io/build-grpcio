@@ -31,9 +31,10 @@ jobs:
 
       - name: Build grpcio-tools wheels
         run: > 
+          cd grpc &&
           cd tools/distrib/python/grpcio_tools && 
           python ../make_grpcio_tools.py && 
-          cd ../../../.. && 
+          cd ../../../../.. && 
           python -m cibuildwheel --output-dir ../wheelhouse tools/distrib/python/grpcio_tools
         env:
           # See https://cibuildwheel.readthedocs.io/en/stable/options/
