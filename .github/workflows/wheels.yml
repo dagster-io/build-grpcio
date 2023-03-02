@@ -34,7 +34,7 @@ jobs:
           cd grpc &&
           cd tools/distrib/python/grpcio_tools && 
           python ../make_grpcio_tools.py && 
-          cd %GITHUB_WORKSPACE/grpc && 
+          cd $GITHUB_WORKSPACE/grpc && 
           python -m cibuildwheel --output-dir ../wheelhouse tools/distrib/python/grpcio_tools
         env:
           # See https://cibuildwheel.readthedocs.io/en/stable/options/
