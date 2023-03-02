@@ -10,7 +10,7 @@ jobs:
       matrix:
         os: ["macOS-11"]
         python_build_version: ["cp38", "cp39", "cp310", "cp311"]
-        package: ["grpcio"]
+        package: ["grpc"]
 
     steps:
       - name: Checkout grpc
@@ -29,13 +29,16 @@ jobs:
       - name: Install cibuildwheel
         run: python -m pip install cibuildwheel==2.12.0
 
-      - name: Build grpcio-tools wheels
+      - name: Build grpc wheels
         run: > 
-          cd grpc &&
-          cd tools/distrib/python/grpcio_tools && 
-          python ../make_grpcio_tools.py && 
-          cd $GITHUB_WORKSPACE/grpc && 
-          python -m cibuildwheel --output-dir ../wheelhouse tools/distrib/python/grpcio_tools
+          cd grpc && 
+          python -m cibuildwheel --output-dir ../wheelhouse
+
+#          cd grpc &&
+#          cd tools/distrib/python/grpcio_tools && 
+#          python ../make_grpcio_tools.py && 
+#          cd $GITHUB_WORKSPACE/grpc && 
+#          python -m cibuildwheel --output-dir ../wheelhouse tools/distrib/python/grpcio_tools
         env:
           # See https://cibuildwheel.readthedocs.io/en/stable/options/
           # Build the m1 wheel for macs
