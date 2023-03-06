@@ -1,4 +1,4 @@
-name: Build mac universal (m1 and non-m1) grpcio wheels
+name: Build m1 grpcio wheel
 
 on: [workflow_dispatch]
 
@@ -42,7 +42,7 @@ jobs:
         env:
           # See https://cibuildwheel.readthedocs.io/en/stable/options/
           # Build the m1 wheel for macs
-          CIBW_ARCHS_MACOS: "universal2"
+          CIBW_ARCHS_MACOS: "arm64"
           # Skip all other wheels
           CIBW_BUILD: "${{ matrix.python_build_version }}-macosx_arm64"
           # Skip tests (wont work on Intel runners)
