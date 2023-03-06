@@ -42,7 +42,7 @@ jobs:
         env:
           # See https://cibuildwheel.readthedocs.io/en/stable/options/
           # Build the m1 wheel for macs
-          CIBW_ARCHS_MACOS: "arm64"
+          CIBW_ARCHS_MACOS: "universal2"
           # Skip all other wheels
           CIBW_BUILD: "${{ matrix.python_build_version }}-macosx_arm64"
           # Skip tests (wont work on Intel runners)
