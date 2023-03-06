@@ -1,4 +1,4 @@
-name: Build m1 grpcio wheel
+name: Build mac universal (m1 and non-m1) grpcio wheels
 
 on: [workflow_dispatch]
 
